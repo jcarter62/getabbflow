@@ -1,6 +1,9 @@
 from getabbflow import GetAbbFlow
 
 sites = [
+    {"address": '192.168.30.146', "site": '01L'},
+    {"address": '192.168.30.130', "site": '01RA'},
+
     {"address": '13l.recorder.wwd.local', "site": '13L'},
     {"address": '12l.recorder.wwd.local', "site": '12L'}
 ]

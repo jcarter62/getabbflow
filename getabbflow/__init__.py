@@ -1,4 +1,3 @@
-import threading
 import bs4
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -25,36 +24,30 @@ class GetAbbFlow():
 
     """
 
-    site = ''
-    address = ''
-    url = ''
-    data = list()
-    timestamp_float = 0
-    timestamp_utc = ''
-    timestamp_local = ''
-
-    _html_content = ''
-    tbls = None
-    bs = None
-    driver = None
-
-    result = {}
-    barrel = ''
-    value = 0.0
-
-    total = 0.0
-    agrigate_data = {}
-    url = ''
-
     def __init__(self, address, site='') -> None:
         ts = arrow.utcnow()
         self.timestamp_float = ts.float_timestamp
         self.timestamp_utc = ts.format('YYYY-MM-DD HH:mm:ss')
         self.timestamp_local = ts.to('local').format('YYYY-MM-DD HH:mm:ss ZZ')
+
         self.address = address
         self.site = site
-        url = self.build_url(address)
-        self.url = url
+        self.url = self.build_url(address)
+        self.data = list()
+
+        self.tbls = None
+        self.bs = None
+        self.driver = None
+
+        self._html_content = ''
+
+        self.result = {}
+        self.barrel = ''
+        self.value = 0.0
+
+        self.total = 0.0
+        self.agrigate_data = {}
+
         self.load_data()
 
     def build_url(self, address):
@@ -110,6 +103,29 @@ class GetAbbFlow():
         self.data.append(oneRowData)
         return
 
+    def save_html_content(self, site, content, tag, url):
+        _shortpath = site + '-' + tag + '.html'
+        _tempfile = os.path.join(os.path.abspath('.'), 'temp', _shortpath)
+        with open(_tempfile, 'w') as f:
+            f.writelines(url)
+            f.write(content)
+
+    def check_for_ai01(self, content):
+        _found_ = False
+        _bs_ = bs4.BeautifulSoup(content, features='html.parser')
+        # <td><div id="ain0">&nbsp;</div></td>
+        try:
+            selected = _bs_.select('div#ain0')
+            if selected == None:
+                return False
+            _data_ = selected[0].text
+            if len(_data_) > 0:
+                return True
+            else:
+                return False
+        except Exception as e:
+            return False
+
     def load_data(self):
         options = Options()
         options.add_argument('--headless')
@@ -117,10 +133,12 @@ class GetAbbFlow():
         self.driver = webdriver.Chrome(executable_path=chrome_driver_path, chrome_options=options)
         self.driver.get(self.url)
 
-        time.sleep(5)
         self._html_content = self.driver.page_source.replace('&nbsp;', ' ')
-        self.bs = bs4.BeautifulSoup(self._html_content, features='html.parser')
+        while not self.check_for_ai01(self._html_content):
+            time.sleep(0.5)
+            self._html_content = self.driver.page_source.replace('&nbsp;', ' ')
 
+        self.bs = bs4.BeautifulSoup(self._html_content, features='html.parser')
         self.tbls = self.bs.select('table')
 
         self.data = list()
