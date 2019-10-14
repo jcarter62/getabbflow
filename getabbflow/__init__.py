@@ -201,5 +201,4 @@ class GetAbbFlow():
             "tag": "INVALID",
             "value": 0.0}
         self.data.append(timeout_record)
-
-        pass
+        return
