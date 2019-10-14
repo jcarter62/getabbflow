@@ -96,19 +96,20 @@ class GetAbbFlow():
         if self.value < -10:
             self.value = 0.0
         self.result['tag'] = self.barrel
-        self.result['value'] = self.value
+        self.result['value'] = round(self.value, 3)
         return self.result
 
     def save_result(self, oneRowData):
         self.data.append(oneRowData)
         return
 
-    def save_html_content(self, site, content, tag, url):
-        _shortpath = site + '-' + tag + '.html'
+    def save_html_content(self, site, content, url):
+        _shortpath = site + '.html'
         _tempfile = os.path.join(os.path.abspath('.'), 'temp', _shortpath)
         with open(_tempfile, 'w') as f:
             f.writelines(url)
             f.write(content)
+        return
 
     def check_for_ai01(self, content):
         _found_ = False
@@ -134,29 +135,48 @@ class GetAbbFlow():
         self.driver.get(self.url)
 
         self._html_content = self.driver.page_source.replace('&nbsp;', ' ')
-        while not self.check_for_ai01(self._html_content):
-            time.sleep(0.5)
-            self._html_content = self.driver.page_source.replace('&nbsp;', ' ')
-
-        self.bs = bs4.BeautifulSoup(self._html_content, features='html.parser')
-        self.tbls = self.bs.select('table')
-
-        self.data = list()
-        for t in self.tbls:
-            try:
-                if t.attrs['border'] == '2' and t.attrs['width'] == '100%':
-                    # We found the data table, now extract the data.
-                    for row in t.contents[1].contents:
-                        datarow = str(type(row)).__contains__('element.Tag')
-                        if datarow:
-                            if ' BRL' in row.text:
-                                rowdata = self.extract_row(row)
-                                self.save_result(rowdata)
-            except:
-                pass
+        start_time = arrow.utcnow().timestamp
+        input_valid = False
+        continue_2_check = True
+        while continue_2_check:
+            if self.check_for_ai01(self._html_content):
+                input_valid = True
+                continue_2_check = False
+            else:
+                curr_time = arrow.utcnow().timestamp
+                if curr_time - start_time > 4:
+                    input_valid = False
+                    continue_2_check = False
+                else:
+                    time.sleep(0.5)
+                    self._html_content = self.driver.page_source.replace('&nbsp;', ' ')
 
         self.driver.quit()
-        self.calculate_agrigate()
+        self.data = list()
+
+        if input_valid:
+            self.save_html_content(site=self.site, content=self._html_content, url=self.url)
+            self.bs = bs4.BeautifulSoup(self._html_content, features='html.parser')
+            self.tbls = self.bs.select('table')
+
+            for t in self.tbls:
+                try:
+                    if t.attrs['border'] == '2' and t.attrs['width'] == '100%':
+                        # We found the data table, now extract the data.
+                        for row in t.contents[1].contents:
+                            datarow = str(type(row)).__contains__('element.Tag')
+                            if datarow:
+                                if ' BRL' in row.text:
+                                    rowdata = self.extract_row(row)
+                                    self.save_result(rowdata)
+                except:
+                    pass
+
+            self.calculate_agrigate()
+        else:
+            # input not valid
+            self.record_timeout()
+
         return
 
     def calculate_agrigate(self):
@@ -170,5 +190,16 @@ class GetAbbFlow():
             "utc": self.timestamp_utc,
             "local": self.timestamp_local,
             "tag": "TOTAL",
-            "value": self.total}
+            "value": round(self.total, 3)}
         self.data.append(self.agrigate_data)
+
+    def record_timeout(self):
+        timeout_record = {
+            "site": self.site,
+            "utc": self.timestamp_utc,
+            "local": self.timestamp_local,
+            "tag": "INVALID",
+            "value": 0.0}
+        self.data.append(timeout_record)
+
+        pass

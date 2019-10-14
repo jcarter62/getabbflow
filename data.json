@@ -1,0 +1,1265 @@
+{
+  "sites": [
+    {
+      "name": "wtp",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/wtp/",
+        "address": "http://192.168.5.202",
+        "urlname": "5 Points WTP"
+      },
+      "abb": {
+        "url": "https://undefined.api.wwddata.com/",
+        "address": "http://192.168.0.0",
+        "urlname": ""
+      }
+    },
+    {
+      "name": "pvpp",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/pvpp/",
+        "address": "http://192.168.200.32",
+        "urlname": "PVPP"
+      },
+      "abb": {
+        "url": "https://undefined.api.wwddata.com/",
+        "address": "http://192.168.0.0",
+        "urlname": ""
+      }
+    },
+    {
+      "name": "01l",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/1l/",
+        "address": "http://192.168.100.157",
+        "urlname": "1L"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/1l-abb/",
+        "address": "http://192.168.30.146",
+        "urlname": "1L"
+      }
+    },
+    {
+      "name": "01ra",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/1ra/",
+        "address": "http://192.168.100.101",
+        "urlname": "1RA"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/1ra-abb/",
+        "address": "http://192.168.30.130",
+        "urlname": "1RA"
+      }
+    },
+    {
+      "name": "01r20b",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/1r20b/",
+        "address": "http://192.168.100.102",
+        "urlname": "1R20B"
+      },
+      "abb": {
+        "url": "https://undefined.api.wwddata.com/",
+        "address": "http://192.168.0.0",
+        "urlname": ""
+      }
+    },
+    {
+      "name": "01r40b",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/1r40b/",
+        "address": "http://192.168.100.103",
+        "urlname": "1R40B"
+      },
+      "abb": {
+        "url": "https://undefined.api.wwddata.com/",
+        "address": "http://192.168.0.0",
+        "urlname": ""
+      }
+    },
+    {
+      "name": "01r40c",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/1r40c/",
+        "address": "http://192.168.100.104",
+        "urlname": "1R40C"
+      },
+      "abb": {
+        "url": "https://undefined.api.wwddata.com/",
+        "address": "http://192.168.0.0",
+        "urlname": ""
+      }
+    },
+    {
+      "name": "01r4010c",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/1r4010c/",
+        "address": "http://192.168.100.105",
+        "urlname": "1R4010C"
+      },
+      "abb": {
+        "url": "https://undefined.api.wwddata.com/",
+        "address": "http://192.168.0.0",
+        "urlname": ""
+      }
+    },
+    {
+      "name": "01r40d",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/1r40d/",
+        "address": "http://192.168.100.106",
+        "urlname": "1R40D"
+      },
+      "abb": {
+        "url": "https://undefined.api.wwddata.com/",
+        "address": "http://192.168.0.0",
+        "urlname": ""
+      }
+    },
+    {
+      "name": "01r401010d",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/1r401010d/",
+        "address": "http://192.168.100.107",
+        "urlname": "1R401010D"
+      },
+      "abb": {
+        "url": "https://undefined.api.wwddata.com/",
+        "address": "http://192.168.0.0",
+        "urlname": ""
+      }
+    },
+    {
+      "name": "02l",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/2l/",
+        "address": "http://192.168.100.131",
+        "urlname": "2L"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/2l-abb/",
+        "address": "http://192.168.30.147",
+        "urlname": "2L"
+      }
+    },
+    {
+      "name": "02ra",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/2ra/",
+        "address": "http://192.168.100.108",
+        "urlname": "2RA"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/2ra-abb/",
+        "address": "http://192.168.30.131",
+        "urlname": "2RA"
+      }
+    },
+    {
+      "name": "02rb",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/2rb/",
+        "address": "http://192.168.100.109",
+        "urlname": "2RB"
+      },
+      "abb": {
+        "url": "https://undefined.api.wwddata.com/",
+        "address": "http://192.168.0.0",
+        "urlname": ""
+      }
+    },
+    {
+      "name": "03l",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/3l/",
+        "address": "http://192.168.100.132",
+        "urlname": "3L"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/3l-abb/",
+        "address": "http://192.168.30.148",
+        "urlname": "3L"
+      }
+    },
+    {
+      "name": "03r",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/3r/",
+        "address": "http://192.168.100.110",
+        "urlname": "3R"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/3r-abb/",
+        "address": "http://192.168.30.132",
+        "urlname": "3R"
+      }
+    },
+    {
+      "name": "04l",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/4l/",
+        "address": "http://192.168.100.133",
+        "urlname": "4L"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/4l-abb/",
+        "address": "http://192.168.30.149",
+        "urlname": "4L"
+      }
+    },
+    {
+      "name": "04r",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/4r/",
+        "address": "http://192.168.100.111",
+        "urlname": "4R"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/4r-abb/",
+        "address": "http://192.168.30.133",
+        "urlname": "4R"
+      }
+    },
+    {
+      "name": "05l",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/5l/",
+        "address": "http://192.168.100.134",
+        "urlname": "5L"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/5l-abb/",
+        "address": "http://192.168.30.150",
+        "urlname": "5L"
+      }
+    },
+    {
+      "name": "061",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/6-1/",
+        "address": "http://192.168.100.158",
+        "urlname": "6-1 PP"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/6-1-abb/",
+        "address": "http://192.168.30.172",
+        "urlname": "6-1"
+      }
+    },
+    {
+      "name": "062",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/6-2/",
+        "address": "http://192.168.100.156",
+        "urlname": "6-2 PP"
+      },
+      "abb": {
+        "url": "https://undefined.api.wwddata.com/",
+        "address": "http://192.168.0.0",
+        "urlname": ""
+      }
+    },
+    {
+      "name": "06l",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/6l/",
+        "address": "http://192.168.100.135",
+        "urlname": "6L"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/6l-abb/",
+        "address": "http://192.168.30.151",
+        "urlname": "6L"
+      }
+    },
+    {
+      "name": "071",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/7-1/",
+        "address": "http://192.168.100.98",
+        "urlname": "7-1"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/7LRF-abb/",
+        "address": "http://192.168.30.173",
+        "urlname": "7L-Rev-Flow"
+      }
+    },
+    {
+      "name": "072",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/7-2/",
+        "address": "http://192.168.100.130",
+        "urlname": "7-2 PP"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/7-2-abb/",
+        "address": "http://192.168.30.174",
+        "urlname": "7-2"
+      }
+    },
+    {
+      "name": "07l",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/7l/",
+        "address": "http://192.168.100.136",
+        "urlname": "7L"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/7l-abb/",
+        "address": "http://192.168.30.152",
+        "urlname": "7L"
+      }
+    },
+    {
+      "name": "07ra",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/7ra/",
+        "address": "http://192.168.100.112",
+        "urlname": "7RA"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/7ra-abb/",
+        "address": "http://192.168.30.135",
+        "urlname": "7RA"
+      }
+    },
+    {
+      "name": "07rb",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/7rb/",
+        "address": "http://192.168.100.113",
+        "urlname": "7RB"
+      },
+      "abb": {
+        "url": "https://undefined.api.wwddata.com/",
+        "address": "http://192.168.0.0",
+        "urlname": ""
+      }
+    },
+    {
+      "name": "07rc",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/7rc/",
+        "address": "http://192.168.100.114",
+        "urlname": "7RC"
+      },
+      "abb": {
+        "url": "https://undefined.api.wwddata.com/",
+        "address": "http://192.168.0.0",
+        "urlname": ""
+      }
+    },
+    {
+      "name": "07rd",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/7rd/",
+        "address": "http://192.168.100.115",
+        "urlname": "7RD"
+      },
+      "abb": {
+        "url": "https://undefined.api.wwddata.com/",
+        "address": "http://192.168.0.0",
+        "urlname": ""
+      }
+    },
+    {
+      "name": "08l",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/8l/",
+        "address": "http://192.168.100.137",
+        "urlname": "8L"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/8l-abb/",
+        "address": "http://192.168.30.153",
+        "urlname": "8L"
+      }
+    },
+    {
+      "name": "09l",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/9l/",
+        "address": "http://192.168.100.138",
+        "urlname": "9L"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/9l-abb/",
+        "address": "http://192.168.30.154",
+        "urlname": "9L"
+      }
+    },
+    {
+      "name": "10l",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/10l/",
+        "address": "http://192.168.100.139",
+        "urlname": "10L"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/10l-abb/",
+        "address": "http://192.168.30.155",
+        "urlname": "10L"
+      }
+    },
+    {
+      "name": "11l",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/11l/",
+        "address": "http://192.168.100.140",
+        "urlname": "11L"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/11l-abb/",
+        "address": "http://192.168.30.156",
+        "urlname": "11L"
+      }
+    },
+    {
+      "name": "11r",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/11r/",
+        "address": "http://192.168.100.116",
+        "urlname": "11R"
+      },
+      "abb": {
+        "url": "https://undefined.api.wwddata.com/",
+        "address": "http://192.168.0.0",
+        "urlname": ""
+      }
+    },
+    {
+      "name": "12l",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/12l/",
+        "address": "http://192.168.100.141",
+        "urlname": "12L"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/12l-abb/",
+        "address": "http://192.168.30.157",
+        "urlname": "12L"
+      }
+    },
+    {
+      "name": "12r",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/12r/",
+        "address": "http://192.168.100.117",
+        "urlname": "12R"
+      },
+      "abb": {
+        "url": "https://undefined.api.wwddata.com/",
+        "address": "http://192.168.0.0",
+        "urlname": ""
+      }
+    },
+    {
+      "name": "13l",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/13l/",
+        "address": "http://192.168.100.142",
+        "urlname": "13L"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/13l-abb/",
+        "address": "http://192.168.30.158",
+        "urlname": "13L"
+      }
+    },
+    {
+      "name": "13ra",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/13ra/",
+        "address": "http://192.168.100.118",
+        "urlname": "13RA"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/13ra-abb/",
+        "address": "http://192.168.30.138",
+        "urlname": "13RA"
+      }
+    },
+    {
+      "name": "13rb",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/13rb/",
+        "address": "http://192.168.100.119",
+        "urlname": "13RB"
+      },
+      "abb": {
+        "url": "https://undefined.api.wwddata.com/",
+        "address": "http://192.168.0.0",
+        "urlname": ""
+      }
+    },
+    {
+      "name": "14l",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/14l/",
+        "address": "http://192.168.100.143",
+        "urlname": "14L"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/14l-abb/",
+        "address": "http://192.168.30.159",
+        "urlname": "14L"
+      }
+    },
+    {
+      "name": "14ra",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/14ra/",
+        "address": "http://192.168.100.120",
+        "urlname": "14RA"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/14ra-abb/",
+        "address": "http://192.168.30.139",
+        "urlname": "14RA"
+      }
+    },
+    {
+      "name": "14rb",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/14rb/",
+        "address": "http://192.168.100.121",
+        "urlname": "14RB"
+      },
+      "abb": {
+        "url": "https://undefined.api.wwddata.com/",
+        "address": "http://192.168.0.0",
+        "urlname": ""
+      }
+    },
+    {
+      "name": "14rc",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/14rc/",
+        "address": "http://192.168.100.122",
+        "urlname": "14RC"
+      },
+      "abb": {
+        "url": "https://undefined.api.wwddata.com/",
+        "address": "http://192.168.0.0",
+        "urlname": ""
+      }
+    },
+    {
+      "name": "15l",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/15l/",
+        "address": "http://192.168.100.144",
+        "urlname": "15L"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/15l-abb/",
+        "address": "http://192.168.30.160",
+        "urlname": "15L"
+      }
+    },
+    {
+      "name": "15r",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/15r/",
+        "address": "http://192.168.100.123",
+        "urlname": "15R"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/15r-abb/",
+        "address": "http://192.168.30.140",
+        "urlname": "15R"
+      }
+    },
+    {
+      "name": "16l",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/16l/",
+        "address": "http://192.168.100.145",
+        "urlname": "16L"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/16l-abb/",
+        "address": "http://192.168.30.161",
+        "urlname": "16L"
+      }
+    },
+    {
+      "name": "16ra",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/16ra/",
+        "address": "http://192.168.100.124",
+        "urlname": "16RA"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/16ra-abb",
+        "address": "http://192.168.30.141",
+        "urlname": "16RA"
+      }
+    },
+    {
+      "name": "16rb",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/16rb/",
+        "address": "http://192.168.100.125",
+        "urlname": "16RB"
+      },
+      "abb": {
+        "url": "https://undefined.api.wwddata.com/",
+        "address": "http://192.168.0.0",
+        "urlname": ""
+      }
+    },
+    {
+      "name": "16rc",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/16rc/",
+        "address": "http://192.168.100.126",
+        "urlname": "16RC"
+      },
+      "abb": {
+        "url": "https://undefined.api.wwddata.com/",
+        "address": "http://192.168.0.0",
+        "urlname": ""
+      }
+    },
+    {
+      "name": "17l",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/17l/",
+        "address": "http://192.168.100.146",
+        "urlname": "17L"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/17l-abb/",
+        "address": "http://192.168.30.162",
+        "urlname": "17L"
+      }
+    },
+    {
+      "name": "17ra",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/17ra/",
+        "address": "http://192.168.100.95",
+        "urlname": "17RA"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/17ra-abb/",
+        "address": "http://192.168.30.142",
+        "urlname": "17RA"
+      }
+    },
+    {
+      "name": "17rb",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/17rb/",
+        "address": "http://192.168.100.96",
+        "urlname": "17RB"
+      },
+      "abb": {
+        "url": "https://undefined.api.wwddata.com/",
+        "address": "http://192.168.0.0",
+        "urlname": ""
+      }
+    },
+    {
+      "name": "17rc",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/17rc/",
+        "address": "http://192.168.100.97",
+        "urlname": "17RC"
+      },
+      "abb": {
+        "url": "https://undefined.api.wwddata.com/",
+        "address": "http://192.168.0.0",
+        "urlname": ""
+      }
+    },
+    {
+      "name": "18l",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/18l/",
+        "address": "http://192.168.100.147",
+        "urlname": "18L"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/18l-abb/",
+        "address": "http://192.168.30.163",
+        "urlname": "18L"
+      }
+    },
+    {
+      "name": "18r",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/18r/",
+        "address": "http://192.168.100.127",
+        "urlname": "18R"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/18r-abb/",
+        "address": "http://192.168.30.143",
+        "urlname": "18R"
+      }
+    },
+    {
+      "name": "19l",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/19l/",
+        "address": "http://192.168.100.148",
+        "urlname": "19L"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/19l-abb/",
+        "address": "http://192.168.30.164",
+        "urlname": "19L"
+      }
+    },
+    {
+      "name": "19r",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/19r/",
+        "address": "http://192.168.100.128",
+        "urlname": "19R"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/19r-abb/",
+        "address": "http://192.168.30.144",
+        "urlname": "19R"
+      }
+    },
+    {
+      "name": "20l",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/20l/",
+        "address": "http://192.168.100.149",
+        "urlname": "20L"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/20l-abb/",
+        "address": "http://192.168.30.165",
+        "urlname": "20L"
+      }
+    },
+    {
+      "name": "20r",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/20r/",
+        "address": "http://192.168.100.129",
+        "urlname": "20R"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/20r-abb/",
+        "address": "http://192.168.30.145",
+        "urlname": "20R"
+      }
+    },
+    {
+      "name": "21l",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/21l/",
+        "address": "http://192.168.100.150",
+        "urlname": "21L"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/21l-abb/",
+        "address": "http://192.168.30.166",
+        "urlname": "21L"
+      }
+    },
+    {
+      "name": "21r",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/21r/",
+        "address": "http://192.168.200.101",
+        "urlname": "21R"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/21r-abb/",
+        "address": "http://192.168.40.130",
+        "urlname": "21R"
+      }
+    },
+    {
+      "name": "22l",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/22l/",
+        "address": "http://192.168.100.151",
+        "urlname": "22L"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/22l-abb/",
+        "address": "http://192.168.30.167",
+        "urlname": "22L"
+      }
+    },
+    {
+      "name": "22r",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/22r/",
+        "address": "http://192.168.200.102",
+        "urlname": "22R"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/22r-abb/",
+        "address": "http://192.168.40.131",
+        "urlname": "22R"
+      }
+    },
+    {
+      "name": "23l",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/23l/",
+        "address": "http://192.168.100.152",
+        "urlname": "23L"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/23l-abb/",
+        "address": "http://192.168.30.168",
+        "urlname": "23L"
+      }
+    },
+    {
+      "name": "23r",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/23r/",
+        "address": "http://192.168.200.103",
+        "urlname": "23R"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/23r-abb/",
+        "address": "http://192.168.40.132",
+        "urlname": "23R"
+      }
+    },
+    {
+      "name": "24l",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/24l/",
+        "address": "http://192.168.100.153",
+        "urlname": "24L"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/24l-abb/",
+        "address": "http://192.168.30.169",
+        "urlname": "24L"
+      }
+    },
+    {
+      "name": "24r",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/24r/",
+        "address": "http://192.168.200.104",
+        "urlname": "24R"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/24r-abb/",
+        "address": "http://192.168.40.133",
+        "urlname": "24R"
+      }
+    },
+    {
+      "name": "25l",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/25l/",
+        "address": "http://192.168.100.154",
+        "urlname": "25L"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/25l-abb/",
+        "address": "http://192.168.30.170",
+        "urlname": "25L"
+      }
+    },
+    {
+      "name": "25r",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/25r/",
+        "address": "http://192.168.200.105",
+        "urlname": "25R"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/25r-abb/",
+        "address": "http://192.168.40.134",
+        "urlname": "25R"
+      }
+    },
+    {
+      "name": "26l",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/26l/",
+        "address": "http://192.168.100.155",
+        "urlname": "26L"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/26l-abb/",
+        "address": "http://192.168.30.171",
+        "urlname": "26L"
+      }
+    },
+    {
+      "name": "26r",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/26r/",
+        "address": "http://192.168.200.106",
+        "urlname": "26R"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/26r-abb/",
+        "address": "http://192.168.40.135",
+        "urlname": "26R"
+      }
+    },
+    {
+      "name": "27l",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/27l/",
+        "address": "http://192.168.200.118",
+        "urlname": "27L"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/27l-abb/",
+        "address": "http://192.168.40.140",
+        "urlname": "27L"
+      }
+    },
+    {
+      "name": "27r",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/27r/",
+        "address": "http://192.168.200.107",
+        "urlname": "27R"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/27r-abb/",
+        "address": "http://192.168.40.136",
+        "urlname": "27R"
+      }
+    },
+    {
+      "name": "28l",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/28l/",
+        "address": "http://192.168.200.119",
+        "urlname": "28L"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/28l-abb/",
+        "address": "http://192.168.40.141",
+        "urlname": "28L"
+      }
+    },
+    {
+      "name": "28ra",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/28ra/",
+        "address": "http://192.168.200.108",
+        "urlname": "28RA"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/28ra-abb/",
+        "address": "http://192.168.40.137",
+        "urlname": "28RA"
+      }
+    },
+    {
+      "name": "28rb",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/28rb/",
+        "address": "http://192.168.200.109",
+        "urlname": "28RB"
+      },
+      "abb": {
+        "url": "https://undefined.api.wwddata.com/",
+        "address": "http://192.168.0.0",
+        "urlname": ""
+      }
+    },
+    {
+      "name": "28r10w",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/28r10w/",
+        "address": "http://192.168.200.110",
+        "urlname": "28R10W"
+      },
+      "abb": {
+        "url": "https://undefined.api.wwddata.com/",
+        "address": "http://192.168.0.0",
+        "urlname": ""
+      }
+    },
+    {
+      "name": "29l",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/29l/",
+        "address": "http://192.168.200.120",
+        "urlname": "29L"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/29l-abb/",
+        "address": "http://192.168.40.142",
+        "urlname": "29L"
+      }
+    },
+    {
+      "name": "29ra",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/29ra/",
+        "address": "http://192.168.200.111",
+        "urlname": "29RA"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/29ra-abb/",
+        "address": "http://192.168.40.138",
+        "urlname": "29RA"
+      }
+    },
+    {
+      "name": "29rb",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/29rb/",
+        "address": "http://192.168.200.112",
+        "urlname": "29RB"
+      },
+      "abb": {
+        "url": "https://undefined.api.wwddata.com/",
+        "address": "http://192.168.0.0",
+        "urlname": ""
+      }
+    },
+    {
+      "name": "30l",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/30l/",
+        "address": "http://192.168.200.121",
+        "urlname": "30L"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/30l-abb/",
+        "address": "http://192.168.40.143",
+        "urlname": "30L"
+      }
+    },
+    {
+      "name": "30r",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/30r/",
+        "address": "http://192.168.200.113",
+        "urlname": "30R"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/30r-abb/",
+        "address": "http://192.168.40.139",
+        "urlname": "30R"
+      }
+    },
+    {
+      "name": "31l",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/31l/",
+        "address": "http://192.168.200.122",
+        "urlname": "31L"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/31l-abb/",
+        "address": "http://192.168.40.144",
+        "urlname": "31L"
+      }
+    },
+    {
+      "name": "32l",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/32l/",
+        "address": "http://192.168.200.123",
+        "urlname": "32L"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/32l-abb/",
+        "address": "http://192.168.40.145",
+        "urlname": "32L"
+      }
+    },
+    {
+      "name": "33l",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/33l/",
+        "address": "http://192.168.200.124",
+        "urlname": "33L"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/33l-abb/",
+        "address": "http://192.168.40.146",
+        "urlname": "33L"
+      }
+    },
+    {
+      "name": "34l",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/34l",
+        "address": "http://192.168.200.125",
+        "urlname": "34L"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/34l-abb/",
+        "address": "http://192.168.40.147",
+        "urlname": "34L"
+      }
+    },
+    {
+      "name": "35l",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/35l/",
+        "address": "http://192.168.200.126",
+        "urlname": "35L"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/35l-abb/",
+        "address": "http://192.168.40.148",
+        "urlname": "35L"
+      }
+    },
+    {
+      "name": "36l",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/36l/",
+        "address": "http://192.168.200.127",
+        "urlname": "36L"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/36l-abb/",
+        "address": "http://192.168.40.149",
+        "urlname": "36L"
+      }
+    },
+    {
+      "name": "37l",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/37l/",
+        "address": "http://192.168.200.128",
+        "urlname": "37L"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/37l-abb/",
+        "address": "http://192.168.40.150",
+        "urlname": "37L"
+      }
+    },
+    {
+      "name": "38l",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/38l/",
+        "address": "http://192.168.200.129",
+        "urlname": "38L"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/38l-abb/",
+        "address": "http://192.168.40.151",
+        "urlname": "38L"
+      }
+    },
+    {
+      "name": "pv2",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/pv2/",
+        "address": "http://192.168.200.130",
+        "urlname": "PV2"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/pv2-abb/",
+        "address": "http://192.168.40.152",
+        "urlname": "PV2"
+      }
+    },
+    {
+      "name": "pv3",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/pv3/",
+        "address": "http://192.168.200.131",
+        "urlname": "PV3"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/pv3-abb/",
+        "address": "http://192.168.40.153",
+        "urlname": "PV3"
+      }
+    },
+    {
+      "name": "pv4",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/pv4/",
+        "address": "http://192.168.200.114",
+        "urlname": "PV4"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/pv4-abb/",
+        "address": "http://192.168.40.154",
+        "urlname": "PV4"
+      }
+    },
+    {
+      "name": "pv6",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/pv6/",
+        "address": "http://192.168.200.115",
+        "urlname": "PV6"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/pv6-abb/",
+        "address": "http://192.168.40.155",
+        "urlname": "PV6"
+      }
+    },
+    {
+      "name": "pv8",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/pv8/",
+        "address": "http://192.168.200.132",
+        "urlname": "PV8"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/pv8-abb/",
+        "address": "http://192.168.40.156",
+        "urlname": "PV8"
+      }
+    },
+    {
+      "name": "pv9",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/pv9/",
+        "address": "http://192.168.200.133",
+        "urlname": "PV9"
+      },
+      "abb": {
+        "url": "https://red.api.wwddata.com/pv9-abb/",
+        "address": "http://192.168.40.157",
+        "urlname": "PV9"
+      }
+    },
+    {
+      "name": "ck2",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/ck2/",
+        "address": "http://192.168.200.116",
+        "urlname": "CK 2"
+      },
+      "abb": {
+        "url": "https://undefined.api.wwddata.com/",
+        "address": "http://192.168.0.0",
+        "urlname": ""
+      }
+    },
+    {
+      "name": "ck3",
+      "hmi": {
+        "url": "https://red.api.wwddata.com/ck3/",
+        "address": "http://192.168.200.117",
+        "urlname": "CK 3"
+      },
+      "abb": {
+        "url": "https://undefined.api.wwddata.com/",
+        "address": "http://192.168.0.0",
+        "urlname": ""
+      }
+    }
+  ]
+}
