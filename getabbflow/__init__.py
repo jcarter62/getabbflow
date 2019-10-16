@@ -52,7 +52,7 @@ class GetAbbFlow():
 
     def build_url(self, address):
         # Example url:
-        # http://13l.recorder.wwd.local/isapiext.dll/?100000101
+        # # http://13l.recorder.wwd.local/isapiext.dll/?100000101
         prefix = 'http://'
         postfix = '/isapiext.dll/?100000101'
         self.url = prefix + address + postfix
@@ -107,16 +107,31 @@ class GetAbbFlow():
         _shortpath = site + '.html'
         _tempfile = os.path.join(os.path.abspath('.'), 'temp', _shortpath)
         with open(_tempfile, 'w') as f:
-            f.writelines(url)
             f.write(content)
         return
+
+    # def check_for_ai01(self, content):
+    #     _found_ = False
+    #     _bs_ = bs4.BeautifulSoup(content, features='html.parser')
+    #     # <td><div id="ain0">&nbsp;</div></td>
+    #     try:
+    #         selected = _bs_.select('div#ain0')
+    #         if selected == None:
+    #             return False
+    #         _data_ = selected[0].text
+    #         if len(_data_) > 0:
+    #             return True
+    #         else:
+    #             return False
+    #     except Exception as e:
+    #         return False
 
     def check_for_ai01(self, content):
         _found_ = False
         _bs_ = bs4.BeautifulSoup(content, features='html.parser')
         # <td><div id="ain0">&nbsp;</div></td>
         try:
-            selected = _bs_.select('div#ain0')
+            selected = _bs_.text.__contains__('ain0.innerHTML')
             if selected == None:
                 return False
             _data_ = selected[0].text

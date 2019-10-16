@@ -1,27 +1,32 @@
 from multiprocessing import Pool, Manager
-from getabbflow import GetAbbFlow
+import signal
+# from getabbflow import GetAbbFlow
+from abbflow import AbbFlow
+from abbacft import AbbAcFt
 
 show_progress = True
-
-
-# sites = [
-#     {"address": '192.168.30.146', "site": '01L'},
-#     {"address": '192.168.30.130', "site": '01RA'},
-#     {"address": '13l.recorder.wwd.local', "site": '13L'},
-#     {"address": '12l.recorder.wwd.local', "site": '12L'},
-# ]
-
 
 def my_process(inp_param):
     address = inp_param['address']
     site = inp_param['site']
     if show_progress:
         print('Start %s, with address = %s' % (site, address))
-    result = GetAbbFlow(address=address, site=site)
+    flow = AbbFlow(address=address, site=site)
+    acft = AbbAcFt(address=address, site=site)
     if show_progress:
         print('finish %s' % site)
-    data = result.data
-    inp_param['q'].put(data)
+    result = {
+        'site': site,
+        'flow': {},
+        'acft': {}
+    }
+    if len(flow.data) > 0:
+        result['flow'] = flow.data
+
+    if len(acft.data) > 0:
+        result['acft'] = acft.data
+
+    inp_param['q'].put(result)
     return
 
 
@@ -40,6 +45,9 @@ def load_sites_from_file():
     return __result
 
 
+def sighandler(a, b):
+    pass
+
 sites = load_sites_from_file()
 
 #
@@ -57,15 +65,19 @@ for s in sites:
 #
 # Perform work.
 #
-pool = Pool(processes=3)
+signal.signal(signal.SIGINT, sighandler)
+pool = Pool()
 pool.map(my_process, params)
 
 #
 # Get Results from output_queue.
 #
+items = list()
 while not output_queue.empty():
     item = output_queue.get()
-    for row in item:
-        print(row)
+    items.append(item)
+
+for row in items:
+    print(row)
 
 print('******** app finished *******')
