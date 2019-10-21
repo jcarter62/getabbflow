@@ -1,16 +1,22 @@
 from flask import Flask, render_template
 from flask_bootstrap import Bootstrap
 import os, json
-from abbdata import AbbData
+from abbapi import AbbAPI
 
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
 
 
 @app.route('/')
-def home():
+def home_route():
     site_names = load_sites_from_file()
     return render_template('home.html', context={'sites': site_names})
+
+
+@app.route('/data/<site>')
+def site_route(site):
+    data = AbbAPI(site=site)
+    return render_template('site.html', context=data)
 
 
 def load_sites_from_file():

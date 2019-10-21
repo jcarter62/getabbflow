@@ -8,10 +8,12 @@
         <h1>Hello </h1>
         <ul>
             {% for site in context.sites %}
-            <li>{{ site }}</li>
+            <li><a href="data/{{site}}">{{ site }}</a></li>
             {% endfor %}
         </ul>
     </div>
+    <hr>
+    <a href="/">Home</a>
 </div>
-{% endblock %}
 
+{% endblock %}
