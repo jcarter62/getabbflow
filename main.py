@@ -2,6 +2,7 @@ from flask import Flask, render_template, send_from_directory, jsonify
 from flask_bootstrap import Bootstrap
 import os, json
 from abbapi import AbbAPI
+from abbsites import AbbSites
 
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
@@ -13,8 +14,8 @@ def favicon():
 
 @app.route('/')
 def home_route():
-    site_names = load_sites_from_file()
-    return render_template('home.html', context={'sites': site_names})
+    sites = AbbSites()
+    return render_template('home.html', context={'sites': sites.names})
 
 
 @app.route('/data/<site>')
@@ -28,14 +29,14 @@ def site_data(site):
     data = AbbAPI(site=site)
     return jsonify(data.data)
 
-def load_sites_from_file():
-    filename = os.path.join(os.path.abspath('.'), 'data.json')
-    with open(filename, 'r') as f:
-        data = json.load(f)
-
-    result = []
-    for s in data['sites']:
-        if s['abb']['urlname'] > '':
-            result.append(s['name'])
-
-    return result
+# def load_sites_from_file():
+#     filename = os.path.join(os.path.abspath('.'), 'data.json')
+#     with open(filename, 'r') as f:
+#         data = json.load(f)
+#
+#     result = []
+#     for s in data['sites']:
+#         if s['abb']['urlname'] > '':
+#             result.append(s['name'])
+#
+#     return result

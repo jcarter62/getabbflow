@@ -13,8 +13,9 @@
             <div class="row mb-3">
                 {% endif %}
                 <div class="col-md-4 themed-grid-col">
-                    <span><a href="data/{{site}}">{{ site }}</a><span class="sitestatus"
-                                                                      id="{{site}}">&nbsp; XXX &nbsp;</span></span>
+                    <span><a href="data/{{site}}">{{ site }}</a>
+                        <span onclick="reload_site('{{site}}');" class="sitestatus" id="{{site}}">?.???</span>
+                    </span>
                 </div>
                 {% if endRow %}
             </div>
@@ -28,7 +29,7 @@
 
 <script type="text/javascript" src="{{url_for('static', filename='js/includes.js')}}"></script>
 <script type="text/javascript">
-    document.onload = startup()
+    // document.onload = startup()
 </script>
 
 {% endblock %}
