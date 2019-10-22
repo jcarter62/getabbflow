@@ -6,17 +6,17 @@
 <div class="container">
     <div class="page-header">
         <h1><a href="/data/{{context.site}}">Site {{context.site}}</a></h1>
-        <h2>ACFT Values</h2>
-        {% for r in context.data['acft'] %}
-        {{ r.tag }} {{ r.value}}<br>
-        {% endfor %}
-        <h2>FLOW Values</h2>
-        {% for r in context.data['flow'] %}
-        {{ r.tag }} {{ r.value }}<br>
-        {% endfor %}
+        <div class="jumbotron">
+            <h2>ACFT Values</h2>
+            {% for r in context.data['acft'] %}
+            {{ r.tag }} {{ r.value}}<br>
+            {% endfor %}
+            <h2>FLOW Values</h2>
+            {% for r in context.data['flow'] %}
+            {{ r.tag }} {{ r.value }}<br>
+            {% endfor %}
+        </div>
     </div>
-    <hr>
     <a href="/">Home</a>
-
 </div>
 {% endblock %}
