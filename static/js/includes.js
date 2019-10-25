@@ -1,3 +1,4 @@
+
 function startup() {
     let collection = document.getElementsByClassName('sitestatus');
     for (var c in collection) {
@@ -71,6 +72,7 @@ function find_id_by_sitename(sitename) {
     return id;
 }
 
+let countdown_from = 120;
 let countdown_timer = 0;
 
 function timerHandler() {
@@ -78,10 +80,8 @@ function timerHandler() {
         countdown_timer--;
         document.getElementById('countdown').innerText = countdown_timer.toString();
         if (countdown_timer < 0) {
-            countdown_timer = 60;
+            countdown_timer = countdown_from;
             startup();
         }
     }, 1000);
 }
-
-
