@@ -4,7 +4,12 @@
 <link href="{{url_for('static', filename='css/home.css')}}" rel="stylesheet">
 <div class="container">
     <div class="page-header">
-        <h2>ABB Paperless Recorders</h2>
+        <div class="row">
+            <div class="col-md-10">
+                <h2>ABB Paperless Recorders</h2>
+            </div>
+            <div class="col-md-2 refresh_count" id="countdown">&nbsp;</div>
+        </div>
         <div class="jumbotron">
             {% for site in context.sites %}
             {% set startRow = (loop.index - 1) is divisibleby(3) %}
@@ -14,7 +19,7 @@
                 {% endif %}
                 <div class="col-md-4 themed-grid-col">
                     <span><a href="data/{{site}}">{{ site }}</a>
-                        <span onclick="reload_site('{{site}}');" class="sitestatus" id="{{site}}">?.???</span>
+                        <span onclick="reload_site('{{site}}');" class="sitestatus" id="{{site}}">&nbsp;</span>
                     </span>
                 </div>
                 {% if endRow %}
@@ -29,7 +34,10 @@
 
 <script type="text/javascript" src="{{url_for('static', filename='js/includes.js')}}"></script>
 <script type="text/javascript">
-    // document.onload = startup()
+    document.onload = startup();
+    // Reload page every 60 seconds.
+    // setTimeout(function () { startup(); }, 60000);
+    timerHandler();
 </script>
 
 {% endblock %}

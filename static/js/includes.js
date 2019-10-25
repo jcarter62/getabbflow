@@ -4,7 +4,7 @@ function startup() {
         // console.log( collection[c] )
         let id = collection[c].id;
         if (id != null) {
-            document.getElementById(id).innerText = ' Loading ...';
+//            document.getElementById(id).innerText = ' Loading ...';
             thisurl = '/getdata/' + id;
             // if ( id == '14l') {
             fetch(thisurl).then(function (response) {
@@ -29,7 +29,7 @@ function startup() {
 function reload_site(site) {
     let id = find_id_by_sitename(site);
     if (id != null) {
-        document.getElementById(id).innerText = ' Loading ...';
+        document.getElementById(id).classList.add('siteloading');
         let thisurl = '/getdata/' + id;
         fetch(thisurl).then(function (response) {
             response.json().then(function (data) {
@@ -49,6 +49,8 @@ function reload_site(site) {
                     result = total_flow.toString();
                 }
                 document.getElementById(id).innerText = result;
+                document.getElementById(id).classList.remove('siteloading');
+
             });
         });
     }
@@ -68,3 +70,18 @@ function find_id_by_sitename(sitename) {
     }
     return id;
 }
+
+let countdown_timer = 0;
+
+function timerHandler() {
+    setInterval(function () {
+        countdown_timer--;
+        document.getElementById('countdown').innerText = countdown_timer.toString();
+        if (countdown_timer < 0) {
+            countdown_timer = 60;
+            startup();
+        }
+    }, 1000);
+}
+
+

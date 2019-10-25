@@ -1,3 +1,11 @@
 .sitestatus {
     float: right
 }
+
+.siteloading {
+    font-style: italic;
+}
+
+.refresh_count {
+    float: right;
+}
