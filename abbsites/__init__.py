@@ -17,6 +17,7 @@ class AbbSites:
             if s['abb']['urlname'] > '':
                 this_name = s['name']
                 self.names.append(this_name)
+        return
 
     def find_by_name(self, name) -> str:
         address = ''

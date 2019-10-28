@@ -15,16 +15,20 @@ import time, datetime
 #     new_hour = curr_hour - offset
 #     return dt.floor('hour').replace(hour=new_hour)
 
-while True:
-    curtime = arrow.utcnow()
-    tu = TimeUtil()
+# while True:
+#     curtime = arrow.utcnow()
+#     tu = TimeUtil()
+#
+#     t5min = tu.t5min(curtime)
+#     t5mins = datetime.datetime.fromtimestamp(t5min)
+#     qtrhr = tu.qtrhr(curtime)
+#     qtrhrs = datetime.datetime.fromtimestamp(qtrhr)
+#     qtrday = tu.qtrday(curtime)
+#     qtrdays = datetime.datetime.fromtimestamp(qtrday)
+#
+#     print('%s\t%d\t%s\t%d\t%s\t%d\t%s' % (curtime, t5min, t5mins, qtrhr, qtrhrs, qtrday, qtrdays))
+#     time.sleep(2.5)
 
-    t5min = tu.t5min(curtime)
-    t5mins = datetime.datetime.fromtimestamp(t5min)
-    qtrhr = tu.qtrhr(curtime)
-    qtrhrs = datetime.datetime.fromtimestamp(qtrhr)
-    qtrday = tu.qtrday(curtime)
-    qtrdays = datetime.datetime.fromtimestamp(qtrday)
+from abbsavedata import AbbSaveData
 
-    print('%s\t%d\t%s\t%d\t%s\t%d\t%s' % (curtime, t5min, t5mins, qtrhr, qtrhrs, qtrday, qtrdays))
-    time.sleep(2.5)
+x = AbbSaveData()

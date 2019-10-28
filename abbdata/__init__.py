@@ -32,13 +32,13 @@ class AbbData:
             state = 'error'
         else:
             state = 'ok'
-            current_time = arrow.utcnow()
-            tu = TimeUtil()
 
-            self.data['t0'] = current_time.timestamp
-            self.data['t5min'] = tu.t5min(current_time)
-            self.data['qtrhr'] = tu.qtrhr(current_time)
-            self.data['qtrday'] = tu.qtrday(current_time)
+        current_time = arrow.utcnow()
+        tu = TimeUtil()
+        self.data['t0'] = current_time.timestamp
+        self.data['t5min'] = tu.t5min(current_time)
+        self.data['qtrhr'] = tu.qtrhr(current_time)
+        self.data['qtrday'] = tu.qtrday(current_time)
 
         self.data['state'] = state
         self.save_data()
