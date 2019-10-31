@@ -125,11 +125,12 @@ class AbbFlow:
         print('Requesting data from %s at %s' % (self.site, self.url))
         request_completed = False
         try:
-            self.content = requests.get(self.url, timeout=4)
+            self.content = requests.get(self.url, timeout=20)
             request_completed = True
             self.save_html_content(self.site, self.content.text)
-        except Timeout:
-            print('Request %s timeout' % self.site)
+        except requests.exceptions.RequestException as e:
+            # https://stackoverflow.com/a/16511493
+            print('abbflow Request exception: %s ' % e.__str__())
 
         if request_completed:
             if self.flow_exists(self.content.text):

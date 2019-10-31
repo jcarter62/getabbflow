@@ -1,40 +1,64 @@
 from pymongo import MongoClient
+from urllib.parse import quote_plus
 
 
 class AbbSaveData:
 
     def __init__(self) -> None:
-        self.uri = 'mongodb://10.100.20.25'
-        self.client = MongoClient(self.uri)
+        user = 'abbuser'
+        passwd = 'abbpass'
+        host = '10.100.20.25'
+        uri = "mongodb://%s:%s@%s" % (quote_plus(user), quote_plus(passwd), host)
+        uri = "mongodb://%s" % host
+
+        print(uri)
+        self.client = MongoClient(uri)
         self.db = self.client['abb']
         self.collection = self.db['data']
+        self.mrr = self.db['data_mrr']
         super().__init__()
 
     def save_record(self, key, data):
-        x = ''
         local_record = data
         local_record['_id'] = key
-        x = x + '1'
         try:
             print('find_one %s' % key)
-            x = x + '2'
             records = self.collection.find({"_id": key})
             this_record = None
             if (records.count() > 0):
                 this_record = records[0]
-            x = x + '3'
-            if this_record != None:
-                x = x + '4'
-                self.collection.find_one_and_replace(filter(key), local_record)
-                x = x + '5'
-            else:
-                x = x + '6'
+            if this_record is None:
                 self.collection.insert_one(local_record)
-                x = x + '7'
+            else:
+                self.collection.find_one_and_replace({"_id": key}, local_record)
+
+            self.save_most_recent_record(local_record)
 
         except Exception as e:
+            s = 'Exception occurred. ' + e.__str__()
+            print(s)
 
-            s = 'Exception occurred. ' + x + ' ' + e.__str__()
+        return
+
+    def save_most_recent_record(self, data):
+        local_record = data
+        key = local_record['site']
+        local_record['data_key'] = local_record['_id']
+        local_record['_id'] = key
+
+        try:
+            records = self.mrr.find({"_id": key})
+            this_record = None
+            if records.count() > 0:
+                this_record = records[0]
+
+            if this_record is None:
+                self.mrr.insert_one(local_record)
+            else:
+                self.mrr.find_one_and_replace({"_id": key}, local_record)
+
+        except Exception as e:
+            s = 'Exception occurred. ' + e.__str__()
             print(s)
 
         return

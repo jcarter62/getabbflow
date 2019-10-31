@@ -1,0 +1,49 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}Title Here{% endblock %}
+{% block content %}
+<link href="{{url_for('static', filename='css/home.css')}}" rel="stylesheet">
+<div class="container">
+    <div class="page-header">
+        <div class="row">
+            <div class="col-md-10">
+                <h2>ABB Paperless Recorders</h2>
+            </div>
+            <div class="col-md-2 refresh_count" id="countdown">&nbsp;</div>
+        </div>
+        <div class="jumbotron">
+            <div class="mapouter">
+                <div class="gmap_canvas">
+                    <iframe width="800" height="700" id="gmap_canvas"
+                            src="https://maps.google.com/maps?q=23050%20W.%20Mt%20Whitney%20%20%20%20%20%20Five%20Points%2C%20CA%2093624&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                            frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                    <a href="https://usave.co.uk">usave</a></div>
+                <style>.mapouter {
+                    position: relative;
+                    text-align: right;
+                    height: 700px;
+                    width: 800px;
+                }
+
+                .gmap_canvas {
+                    overflow: hidden;
+                    background: none !important;
+                    height: 700px;
+                    width: 800px;
+                }</style>
+            </div>
+
+        </div>
+    </div>
+    <hr>
+    <a href="/">Home</a>
+</div>
+
+<!--<script type="text/javascript" src="{{url_for('static', filename='js/includes.js')}}"></script>-->
+<!--<script type="text/javascript">-->
+<!--    // document.onload = startup();-->
+<!--    // Reload page every 60 seconds.-->
+<!--    // setTimeout(function () { startup(); }, 60000);-->
+<!--    timerHandler();-->
+<!--</script>-->
+
+{% endblock %}

@@ -34,10 +34,11 @@ class AbbAcFt:
         print('Requesting data from %s at %s' % (self.site, self.url))
         request_completed = False
         try:
-            self.content = requests.get(self.url, timeout=4)
+            self.content = requests.get(self.url, timeout=20)
             request_completed = True
-        except Timeout:
-            print('Request %s timeout' % self.site)
+        except requests.exceptions.RequestException as e:
+            # https://stackoverflow.com/a/16511493
+            print('abbacft Request exception: %s ' % e.__str__())
 
         if request_completed:
             if self.acft_exists(self.content.text):

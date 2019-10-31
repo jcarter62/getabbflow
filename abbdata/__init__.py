@@ -39,9 +39,20 @@ class AbbData:
         self.data['t5min'] = tu.t5min(current_time)
         self.data['qtrhr'] = tu.qtrhr(current_time)
         self.data['qtrday'] = tu.qtrday(current_time)
+        self.data['local'] = current_time.to('local').format('YYYY-MM-DD HH:mm:ss ZZ')
 
         self.data['state'] = state
-        self.save_data()
+        self.data['tflow'] = self.get_flow_total()
+
+    #        self.save_data()
+
+    def get_flow_total(self):
+        result = 0
+        for r in self.data['flow']:
+            if r['tag'] == 'TOTAL':
+                result = r['value']
+        return result
+
 
     def save_data(self):
         db = AbbSaveData()
