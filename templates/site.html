@@ -5,16 +5,19 @@
 {% block content %}
 <div class="container">
     <div class="page-header">
-        <h1><a href="/data/{{context.site}}">Site {{context.site}}</a></h1>
+        <h1><a href="/site/{{context.site}}">Site {{context.site}}</a></h1>
         <div class="jumbotron">
-            <h2>ACFT Values</h2>
+            <h3>{{context.flow}} cfs</h3>
+            ACFT Values
             {% for r in context.data['acft'] %}
-            {{ r.tag }} {{ r.value}}<br>
+            {{ r.tag }} {{ r.value}} acft<br>
             {% endfor %}
-            <h2>FLOW Values</h2>
+            FLOW Values
             {% for r in context.data['flow'] %}
-            {{ r.tag }} {{ r.value }}<br>
+            {{ r.tag }} {{ r.value }} cfs<br>
             {% endfor %}
+            <hr>
+            Reading Timestamp: {{context.timestamp}}
         </div>
     </div>
     <a href="/">Home</a>

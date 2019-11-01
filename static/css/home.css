@@ -9,3 +9,48 @@
 .refresh_count {
     float: right;
 }
+
+.age0 {
+    color: black;
+}
+
+.age1 {
+    color: darkred;
+}
+
+.age2 {
+    color: rebeccapurple;
+}
+
+.age3 {
+    color: mediumvioletred;
+}
+
+.age4 {
+    color: red;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+

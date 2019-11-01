@@ -3,7 +3,9 @@ from flask_bootstrap import Bootstrap
 import os, json
 # from abbapi import AbbAPI
 from abbsites import AbbSites
-from abbsitedata import AbbSiteData
+from abbsitemrr import AbbSiteMRR
+from abballsitesmrr import AbbAllSitesMRR
+import arrow
 
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
@@ -16,7 +18,39 @@ def favicon():
 @app.route('/')
 def home_route():
     sites = AbbSites()
-    return render_template('home.html', context={'sites': sites.names})
+    all_mrr = AbbAllSitesMRR().data
+    for mrr in all_mrr:
+        mrr['tflowfmt'] = '%10.2f cfs' % mrr['tflow']
+        mrr['age'] = calc_age(mrr)
+        mrr['title'] = calc_title(mrr)
+
+    return render_template('home.html', context={'data': all_mrr})
+
+
+def calc_title(record) -> str:
+    result = ''
+    current_time = arrow.utcnow().timestamp
+    age = current_time - record['t0']
+    result = 'Record Age in Seconds %d, State = %s ' % (age, record['state'])
+    return result
+
+
+def calc_age(record) -> str:
+    current_time = arrow.utcnow().timestamp
+    age = current_time - record['t0']
+    if age < 120:
+        result = '0'
+    elif age < 240:
+        result = '1'
+    elif age < 360:
+        result = '2'
+    elif age < 480:
+        result = '3'
+    else:
+        result = '4'
+
+    result = 'age' + result
+    return result
 
 
 @app.route('/map')
@@ -24,10 +58,14 @@ def route_map():
     return render_template('map.html', context={})
 
 
-@app.route('/api/site/recent/<site>')
+@app.route('/site/<site>')
 def route_site_recent(site):
-    onesite = AbbSiteData(site)
-    flow = onesite.recent_flow()
+    one_site = AbbSiteMRR(site)
+    flow = one_site.tflow()
+    timestamp = one_site.local()
+    data = one_site.record
+    obj = {'flow': flow, 'timestamp': timestamp, 'data': data, 'site': site}
+    return render_template('site.html', context=obj)
 
 # @app.route('/data/<site>')
 # def site_route(site):

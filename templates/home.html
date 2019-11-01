@@ -11,16 +11,17 @@
             <div class="col-md-2 refresh_count" id="countdown">&nbsp;</div>
         </div>
         <div class="jumbotron">
-            {% for site in context.sites %}
+            {% for row in context.data %}
             {% set startRow = (loop.index - 1) is divisibleby(3) %}
             {% set endRow = loop.index is divisibleby(3) %}
             {% if startRow %}
             <div class="row mb-3">
                 {% endif %}
                 <div class="col-md-4 themed-grid-col">
-                    <span><a href="data/{{site}}">{{ site }}</a>
-                        <span onclick="reload_site('{{site}}');" class="sitestatus" id="{{site}}">&nbsp;</span>
+                    <span><a href="site/{{row['site']}}">{{ row['site'] }}</a>
+                        <span class="sitestatus {{row['age']}}">{{ row['tflowfmt'] }}</span>
                     </span>
+                    <span class="tooltip">{{row['title']}}</span>
                 </div>
                 {% if endRow %}
             </div>
@@ -37,7 +38,7 @@
     // document.onload = startup();
     // Reload page every 60 seconds.
     // setTimeout(function () { startup(); }, 60000);
-    timerHandler();
+    // timerHandler();
 </script>
 
 {% endblock %}
