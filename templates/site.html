@@ -3,21 +3,82 @@
 {% block title %}Title Here{% endblock %}
 
 {% block content %}
+<link href="{{url_for('static', filename='css/site.css')}}" rel="stylesheet">
 <div class="container">
     <div class="page-header">
         <h1><a href="/site/{{context.site}}">Site {{context.site}}</a></h1>
         <div class="jumbotron">
-            <h3>{{context.flow}} cfs</h3>
-            ACFT Values
-            {% for r in context.data['acft'] %}
-            {{ r.tag }} {{ r.value}} acft<br>
-            {% endfor %}
-            FLOW Values
-            {% for r in context.data['flow'] %}
-            {{ r.tag }} {{ r.value }} cfs<br>
-            {% endfor %}
-            <hr>
-            Reading Timestamp: {{context.timestamp}}
+            <h3>{{context.site}}</h3>
+            <!--            <table class="table-striped">-->
+            <!--                <tr scope="row">-->
+            <!--                    <th scope="col">-->
+            <!--                        ACFT Values-->
+            <!--                    </th>-->
+            <!--                    <th scope="col">&nbsp;</th>-->
+            <!--                </tr>-->
+            <!--                {% for r in context.data['acft'] %}-->
+            <!--                <tr scope="row">-->
+            <!--                    <td>-->
+            <!--                        {{r.tag}}-->
+            <!--                    </td>-->
+            <!--                    <td class="rightalign">-->
+            <!--                        {{r.value}} ACFT-->
+            <!--                    </td>-->
+            <!--                </tr>-->
+            <!--                {% endfor %}-->
+            <!--                <tr scope="row">-->
+            <!--                    <th scope="col">-->
+            <!--                        Flow Values-->
+            <!--                    </th>-->
+            <!--                    <th scope="col">&nbsp;</th>-->
+            <!--                </tr>-->
+            <!--                {% for r in context.data['flow'] %}-->
+            <!--                <tr scope="row">-->
+            <!--                    <td>-->
+            <!--                        {{r.tag}}-->
+            <!--                    </td>-->
+            <!--                    <td class="rightalign">-->
+            <!--                        {{r.value}} CFS-->
+            <!--                    </td>-->
+            <!--                </tr>-->
+            <!--                {% endfor %}-->
+            <!--                <tr scope="row">-->
+            <!--                    <td>-->
+            <!--                        Reading Timestamp: {{context.timestamp}}-->
+            <!--                    </td>-->
+            <!--                </tr>-->
+            <!--            </table>-->
+            <!--            <hr>-->
+            <table class="table table-striped">
+                <thead>
+                <tr scope="row">
+                    <th scope="col-6">&nbsp;</th>
+                    <th scope="col-3">ACFT</th>
+                    <th scope="col-3">CFS</th>
+                </tr>
+
+                </thead>
+                <tbody>
+
+                {% for r in context.combined %}
+                <tr scope="row">
+                    <td scope="col-6">
+                        {{r.tag}}
+                    </td>
+                    <td scope="col-3">
+                        {{r.acft}}
+                    </td>
+                    <td scope="col-3">
+                        {{r.cfs}}
+                    </td>
+                </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+
+            <br>
+            <i>Reading Timestamp: {{context.timestamp}}</i>
+
         </div>
     </div>
     <a href="/">Home</a>

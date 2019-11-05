@@ -20,7 +20,10 @@ def home_route():
     sites = AbbSites()
     all_mrr = AbbAllSitesMRR().data
     for mrr in all_mrr:
-        mrr['tflowfmt'] = '%10.2f cfs' % mrr['tflow']
+        if mrr['state'] == 'ok':
+            mrr['tflowfmt'] = '%10.2f cfs' % mrr['tflow']
+        else:
+            mrr['tflowfmt'] = '-'
         mrr['age'] = calc_age(mrr)
         mrr['title'] = calc_title(mrr)
 
@@ -64,8 +67,35 @@ def route_site_recent(site):
     flow = one_site.tflow()
     timestamp = one_site.local()
     data = one_site.record
-    obj = {'flow': flow, 'timestamp': timestamp, 'data': data, 'site': site}
+    comb = []
+    # for row in data['acft']:
+    #     tag = row['tag']
+    #     acft = row['value']
+    #     cfs = cfs4tag(data['flow'], tag)
+    #     comb.append({'tag': tag, 'acft': acft, 'cfs': cfs})
+    #
+    for row in data['flow']:
+        tag = row['tag']
+        cfs = row['value']
+        acft = acft4tag(data['acft'], tag)
+        comb.append({'tag': tag, 'acft': acft, 'cfs': cfs})
+
+    obj = {'flow': flow, 'timestamp': timestamp, 'data': data, 'site': site, 'combined': comb}
     return render_template('site.html', context=obj)
+
+
+def cfs4tag(rows, tag) -> float:
+    for row in rows:
+        if row['tag'] == tag:
+            return row['value']
+    return 0
+
+
+def acft4tag(rows, tag):
+    for row in rows:
+        if row['tag'] == tag:
+            return row['value']
+    return '-'
 
 # @app.route('/data/<site>')
 # def site_route(site):

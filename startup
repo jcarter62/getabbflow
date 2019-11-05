@@ -1,0 +1,3 @@
+#
+cd /Users/jcarter/projects/abb
+/Users/jcarter/projects/abb/venv/bin/python  /Users/jcarter/projects/abb/request_all_data.py
