@@ -62,7 +62,7 @@ while True:
     start_time = arrow.utcnow().timestamp
     time_remaining = 0
 
-    pool = Pool()
+    pool = Pool(processes=20)
     pool.map(my_process, params)
 
     msg = 'Starting to wait for finished processes'
