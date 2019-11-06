@@ -21,11 +21,12 @@ def home_route():
     all_mrr = AbbAllSitesMRR().data
     for mrr in all_mrr:
         if mrr['state'] == 'ok':
-            mrr['tflowfmt'] = '%10.2f cfs' % mrr['tflow']
+            mrr['tflowfmt'] = ('%10.2f' % mrr['tflow']).lstrip(' ') + 'cfs'
         else:
             mrr['tflowfmt'] = '-'
         mrr['age'] = calc_age(mrr)
         mrr['title'] = calc_title(mrr)
+        mrr['site'] = mrr['site'].rstrip(' ')
 
     return render_template('home.html', context={'data': all_mrr})
 

@@ -5,23 +5,23 @@
 <div class="container">
     <div class="page-header">
         <div class="row">
-            <div class="col-md-10">
+            <div class="col-xs-10">
                 <h2>ABB Paperless Recorders</h2>
             </div>
-            <div class="col-md-2 refresh_count" id="countdown">&nbsp;</div>
+            <div class="col-xs-2 refresh_count" id="countdown">&nbsp;</div>
         </div>
         <div class="jumbotron">
             {% for row in context.data %}
             {% set startRow = (loop.index - 1) is divisibleby(3) %}
             {% set endRow = loop.index is divisibleby(3) %}
             {% if startRow %}
-            <div class="row mb-3">
+            <div class="row xs-3">
                 {% endif %}
-                <div class="col-md-4 themed-grid-col">
-                    <span><a href="site/{{row['site']}}">{{ row['site'] }}</a>
+                <div class="col-xs-4">
+                    <span><a href="site/{{row['site']}}">{{ row['site'] }}
                         <span class="sitestatus {{row['age']}}">{{ row['tflowfmt'] }}</span>
+                    </a>
                     </span>
-                    <span class="tooltip">{{row['title']}}</span>
                 </div>
                 {% if endRow %}
             </div>
