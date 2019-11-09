@@ -1,21 +1,23 @@
-from pymongo import MongoClient
-from urllib.parse import quote_plus
+from abbdbclient import AbbDbClient
+
+
+# from pymongo import MongoClient
 
 
 class AbbSaveData:
 
     def __init__(self) -> None:
-        user = 'abbuser'
-        passwd = 'abbpass'
-        host = '10.100.20.25'
-        uri = "mongodb://%s:%s@%s" % (quote_plus(user), quote_plus(passwd), host)
-        uri = "mongodb://%s" % host
-
-        print(uri)
-        self.client = MongoClient(uri)
-        self.db = self.client['abb']
-        self.collection = self.db['data']
-        self.mrr = self.db['data_mrr']
+        self.db_client = AbbDbClient()
+        self.db = self.db_client.db
+        self.collection = self.db_client.data
+        self.mrr = self.db_client.mrr
+        # host = '10.100.20.25'
+        # uri = "mongodb://%s" % host
+        # print(uri)
+        # self.client = MongoClient(uri)
+        # self.db = self.client['abb']
+        # self.collection = self.db['data']
+        # self.mrr = self.db['data_mrr']
         super().__init__()
 
     def save_record(self, key, data):
