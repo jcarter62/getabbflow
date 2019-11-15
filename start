@@ -1,0 +1,3 @@
+#
+cd /home/nadmin/getabbflow
+./venv/bin/python  ./request_all_data.py
