@@ -19,16 +19,19 @@ def favicon():
 def home_route():
     sites = AbbSites()
     all_mrr = AbbAllSitesMRR().data
+    total = 0.0
     for mrr in all_mrr:
         if mrr['state'] == 'ok':
             mrr['tflowfmt'] = ('%10.2f' % mrr['tflow']).lstrip(' ') + 'cfs'
+            total += mrr['tflow']
         else:
             mrr['tflowfmt'] = '-'
         mrr['age'] = calc_age(mrr)
         mrr['title'] = calc_title(mrr)
         mrr['site'] = mrr['site'].rstrip(' ')
 
-    return render_template('home.html', context={'data': all_mrr})
+    total_str = ('%10.2f' % total).lstrip(' ') + 'cfs'
+    return render_template('home.html', context={'data': all_mrr, 'total': total_str})
 
 
 def calc_title(record) -> str:

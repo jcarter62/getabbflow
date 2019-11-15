@@ -1,12 +1,11 @@
 from pymongo import MongoClient
+from abbdbclient import AbbDbClient
 
 
 class AbbSiteMRR:
 
     def __init__(self, name: str = '') -> None:
-        host = '10.100.20.25'
-        uri = "mongodb://%s" % host
-        self.client = MongoClient(uri)
+        self.client = AbbDbClient().client
         self.db = self.client['abb']
         self.mrr = self.db['data_mrr']
         self.name = name

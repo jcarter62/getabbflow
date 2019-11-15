@@ -1,3 +1,7 @@
 .rightalign {
     float: right
 }
+
+.tabletext {
+    font-size: 2em;
+}

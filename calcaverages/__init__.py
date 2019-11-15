@@ -28,12 +28,14 @@ class CalcAverages:
         if self.t5min > 0:
             # we have a valid t5min value, now get all data records
             # and agrigate for an average.
-            records = db_detail.find({"site": self.site, "t5min": self.t5min})
+            records = db_detail.find({"site": self.site, "t5min": self.t5min, "state": "ok"})
 
         sumflow = 0.0
         avgflow = 0.0
+        self.avgrec = None
         if records:
             for r in records:
+                self.add_to_avgrec(r)
                 for f in r['flow']:
                     if f['tag'] < 'E':
                         sumflow += f['value']
@@ -45,3 +47,26 @@ class CalcAverages:
         self.avg5min = avgflow
 
         print(s)
+
+    def add_to_avgrec(self, rec):
+        if self.avgrec is None:
+            self.avgrec = {
+                "site": self.site,
+                "t5min": self.t5min,
+                "count": 0,
+                "A": {'min': 9999, 'max': -9999, "flow": 0.0, "flowsum": 0.0, 'use': 0.0},
+                "B": {'min': 9999, 'max': -9999, 'use': 0.0},
+                "C": {'min': 9999, 'max': -9999, 'use': 0.0},
+                "D": {'min': 9999, 'max': -9999, 'use': 0.0},
+                "flow": 0.0,
+                "flowsum": 0.0
+            }
+
+        # now add this record to avgrec
+        self.avgrec.count += 1
+        for r in rec.acft:
+            tag = r['tag']
+            if r['value'] > self.avgrec[tag]['max']:
+                self.avgrec[tag]['max'] = r['value']
+            if r['value'] < self.avgrec[tag]['min']:
+                self.avgrec[tag]['min'] = r['value']

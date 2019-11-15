@@ -5,50 +5,9 @@
 {% block content %}
 <link href="{{url_for('static', filename='css/site.css')}}" rel="stylesheet">
 <div class="container">
-    <div class="page-header">
+    <div class="page-header tabletext">
         <h1><a href="/site/{{context.site}}">Site {{context.site}}</a></h1>
         <div class="jumbotron">
-            <h3>{{context.site}}</h3>
-            <!--            <table class="table-striped">-->
-            <!--                <tr scope="row">-->
-            <!--                    <th scope="col">-->
-            <!--                        ACFT Values-->
-            <!--                    </th>-->
-            <!--                    <th scope="col">&nbsp;</th>-->
-            <!--                </tr>-->
-            <!--                {% for r in context.data['acft'] %}-->
-            <!--                <tr scope="row">-->
-            <!--                    <td>-->
-            <!--                        {{r.tag}}-->
-            <!--                    </td>-->
-            <!--                    <td class="rightalign">-->
-            <!--                        {{r.value}} ACFT-->
-            <!--                    </td>-->
-            <!--                </tr>-->
-            <!--                {% endfor %}-->
-            <!--                <tr scope="row">-->
-            <!--                    <th scope="col">-->
-            <!--                        Flow Values-->
-            <!--                    </th>-->
-            <!--                    <th scope="col">&nbsp;</th>-->
-            <!--                </tr>-->
-            <!--                {% for r in context.data['flow'] %}-->
-            <!--                <tr scope="row">-->
-            <!--                    <td>-->
-            <!--                        {{r.tag}}-->
-            <!--                    </td>-->
-            <!--                    <td class="rightalign">-->
-            <!--                        {{r.value}} CFS-->
-            <!--                    </td>-->
-            <!--                </tr>-->
-            <!--                {% endfor %}-->
-            <!--                <tr scope="row">-->
-            <!--                    <td>-->
-            <!--                        Reading Timestamp: {{context.timestamp}}-->
-            <!--                    </td>-->
-            <!--                </tr>-->
-            <!--            </table>-->
-            <!--            <hr>-->
             <table class="table table-striped">
                 <thead>
                 <tr scope="row">

@@ -1,9 +1,6 @@
 from abbdbclient import AbbDbClient
 
 
-# from pymongo import MongoClient
-
-
 class AbbSaveData:
 
     def __init__(self) -> None:
