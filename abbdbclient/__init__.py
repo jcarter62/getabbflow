@@ -2,15 +2,8 @@ from pymongo import MongoClient
 import os
 import json
 
-class AbbDbClient:
 
-    def load_config(self):
-        filename = os.path.join(os.path.abspath('.'), 'db.json')
-        with open(filename, 'r') as f:
-            db_obj = json.load(f)
-        r1 = db_obj['host']
-        r2 = db_obj['port']
-        return r1, r2
+class AbbDbClient:
 
     def __init__(self):
         self.host, self.port = self.load_config()
@@ -22,6 +15,21 @@ class AbbDbClient:
         return
 
     def __del__(self):
+        self.mrr = None
+        self.data = None
+        self.db = None
+        self.client = None
+        return
+
+    def load_config(self):
+        filename = os.path.join(os.path.abspath('.'), 'db.json')
+        with open(filename, 'r') as f:
+            db_obj = json.load(f)
+        r1 = db_obj['host']
+        r2 = db_obj['port']
+        return r1, r2
+
+    def close(self):
         self.mrr = None
         self.data = None
         self.db = None
