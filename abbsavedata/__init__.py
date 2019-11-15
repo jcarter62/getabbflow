@@ -4,10 +4,10 @@ from abbdbclient import AbbDbClient
 class AbbSaveData:
 
     def __init__(self) -> None:
-        self.db_client = AbbDbClient()
-        self.db = self.db_client.db
-        self.collection = self.db_client.data
-        self.mrr = self.db_client.mrr
+        self.client = AbbDbClient()
+        self.db = self.client.db
+        self.collection = self.client.data
+        self.mrr = self.client.mrr
         # host = '10.100.20.25'
         # uri = "mongodb://%s" % host
         # print(uri)
