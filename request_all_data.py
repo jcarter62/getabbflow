@@ -56,7 +56,7 @@ log_it('finished setting up params')
 #
 # Perform work.
 #
-signal.signal(signal.SIGINT, sighandler)
+# signal.signal(signal.SIGINT, sighandler)
 
 while True:
     start_time = arrow.utcnow().timestamp
