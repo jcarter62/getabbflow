@@ -1,4 +1,3 @@
-from pymongo import MongoClient
 from abbdbclient import AbbDbClient
 
 
@@ -10,13 +9,19 @@ class AbbSiteMRR:
         self.mrr = self.db['data_mrr']
         self.name = name
         self.record = None
-        try:
-            records = self.mrr.find({"_id": self.name})
-            if records.count() > 0:
-                self.record = records[0]
-        except Exception as e:
-            s = 'Exception occurred. ' + e.__str__()
-            print(s)
+        self.all_records = self.mrr.find({})
+
+        if name != '':
+            self.set_name(name=name)
+
+    def set_name(self, name: str = ''):
+        for record in self.all_records:
+            if record['site'] == name:
+                self.record = record
+                return
+        # if we get here, there was no match
+        self.record = None
+        return
 
     def tflow(self):
         if self.record is None:

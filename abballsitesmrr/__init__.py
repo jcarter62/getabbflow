@@ -7,12 +7,13 @@ class AbbAllSitesMRR:
     def __init__(self):
         self.sites = AbbSites()
         self.data = []
+        sitemrr = AbbSiteMRR()
         for s in self.sites.names:
-            mrr = AbbSiteMRR(name=s)
-            if mrr.record is None:
+            sitemrr.set_name(name=s)
+            if sitemrr.record is None:
                 pass
             else:
-                self.data.append(mrr.record)
+                self.data.append(sitemrr.record)
 
         self.data.sort(key=lambda x: x['site'])
 

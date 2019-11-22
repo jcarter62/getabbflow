@@ -67,16 +67,12 @@ def route_map():
 
 @app.route('/site/<site>')
 def route_site_recent(site):
-    one_site = AbbSiteMRR(site)
+    one_site = AbbSiteMRR()
+    one_site.set_name(site)
     flow = one_site.tflow()
     timestamp = one_site.local()
     data = one_site.record
     comb = []
-    # for row in data['acft']:
-    #     tag = row['tag']
-    #     acft = row['value']
-    #     cfs = cfs4tag(data['flow'], tag)
-    #     comb.append({'tag': tag, 'acft': acft, 'cfs': cfs})
     #
     for row in data['flow']:
         tag = row['tag']
