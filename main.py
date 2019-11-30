@@ -119,7 +119,9 @@ def acft4tag(rows, tag):
 def get_orders_summary():
     import requests
     result = []
-    url = 'http://localhost:5200/orders_summary'
+    filename = os.path.join(os.path.abspath('.'), 'abborders_url.json')
+
+    url = abb_orders_url() + 'orders_summary'
     request_completed = False
     try:
         content = requests.get(url, timeout=10)
@@ -135,7 +137,7 @@ def get_orders_summary():
 def get_orders_detail(site):
     import requests
     result = []
-    url = 'http://localhost:5200/order_detail/' + site
+    url = abb_orders_url() + 'order_detail/' + site
     request_completed = False
     try:
         content = requests.get(url, timeout=10)
@@ -146,27 +148,20 @@ def get_orders_detail(site):
         print('abbflow Request exception: %s ' % e.__str__())
     return result
 
-# @app.route('/data/<site>')
-# def site_route(site):
-#     data = AbbAPI(site=site)
-#     return render_template('site.html', context=data)
+
+def abb_orders_config_filename():
+    import os
+    filename = os.path.join(os.path.abspath('.'), 'abborders_url.json')
+    return filename
 
 
-# @app.route('/getdata/<site>')
-# def site_data(site):
-#     data = AbbAPI(site=site)
-#     return jsonify(data.data)
+def abb_orders_url():
+    import json
+    filename = abb_orders_config_filename()
+    try:
+        with open(filename, 'r') as f:
+            results = json.load(f)
+    except Exception as e:
+        results = {"url": "http://localhost:5200/"}
 
-
-
-# def load_sites_from_file():
-#     filename = os.path.join(os.path.abspath('.'), 'data.json')
-#     with open(filename, 'r') as f:
-#         data = json.load(f)
-#
-#     result = []
-#     for s in data['sites']:
-#         if s['abb']['urlname'] > '':
-#             result.append(s['name'])
-#
-#     return result
+    return results['url']
