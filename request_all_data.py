@@ -1,4 +1,4 @@
-from multiprocessing import Pool, Manager
+from multiprocessing import Pool, Manager, freeze_support
 import signal
 
 from abbsites import AbbSites
@@ -7,14 +7,11 @@ from abbsavedata import AbbSaveData
 import arrow
 import time
 
-sites = list()
-
-abb_sites = AbbSites()
-sites = abb_sites.names
-
 pause = 120  # seconds
 show_progress = True
 show_log = True
+
+sites = list()
 
 def sighandler(a, b):
     pass
@@ -47,66 +44,80 @@ def my_process(inp_param):
     return
 
 
-#
-# Setup list of sites to request data.
-#
-params = []
-manager = Manager()
-q = manager.Queue()
 
-log_it('start setting up params')
 
-i = 0
-iEnd = len(sites)
-while i < iEnd:
-    one = sites[i]
-    p = {'site': one, 'q': q}
-    params.append(p)
-    i += 1
+if __name__ == '__main__':
+    # freeze_support()
 
-log_it('finished setting up params')
+    #
+    # Setup list of sites to request data.
+    #
+    params = []
+    manager = Manager()
+    q = manager.Queue()
 
-#
-# Perform work.
-#
-# signal.signal(signal.SIGINT, sighandler)
+    abb_sites = AbbSites()
+    sites = abb_sites.names
 
-while True:
-    start_time = arrow.utcnow().timestamp
-    time_remaining = 0
+    log_it('start setting up params')
 
-    pool = Pool(processes=20)
-    pool.map(my_process, params)
+    i = 0
+    iEnd = len(sites)
+    while i < iEnd:
+        one = sites[i]
+        p = {'site': one, 'q': q}
+        params.append(p)
+        i += 1
 
-    msg = 'Starting to wait for finished processes'
-    log_it(msg)
+    print(sites)
+    print(params)
 
-    db = AbbSaveData()
-    while not q.empty():
-        item = q.get()
-        msg = 'process finished for %s' % item.data['site']
+    log_it('finished setting up params')
+
+
+    #
+    # Perform work.
+    #
+    # signal.signal(signal.SIGINT, sighandler)
+
+    while True:
+        start_time = arrow.utcnow().timestamp
+        time_remaining = 0
+
+        print(params)
+        with Pool(processes=20) as pool:
+            # pool = Pool(processes=20)
+            pool.map(my_process, params)
+
+        msg = 'Starting to wait for finished processes'
         log_it(msg)
-        key = f'%-15s - %d' % (item.data['site'], item.data['t0'])
-        try:
-            db.save_record(key=key, data=item.data)
-        finally:
-            msg = 'save record for %s' % item.data['site']
+
+        db = AbbSaveData()
+        while not q.empty():
+            item = q.get()
+            msg = 'process finished for %s' % item.data['site']
             log_it(msg)
+            key = f'%-15s - %d' % (item.data['site'], item.data['t0'])
+            try:
+                db.save_record(key=key, data=item.data)
+            finally:
+                msg = 'save record for %s' % item.data['site']
+                log_it(msg)
 
-    db.client.close()
+        db.client.close()
 
-    still_waiting = True
-    while still_waiting:
-        try:
-            time_remaining = arrow.utcnow().timestamp - start_time
-            still_waiting = (time_remaining < pause)
-            msg = 'Elapsed time: %s, Target time: %s, State: %s' % (time_remaining, pause, still_waiting.__str__())
-            log_it(msg)
-            if still_waiting:
-                time.sleep(5)
-        finally:
-            pass
+        still_waiting = True
+        while still_waiting:
+            try:
+                time_remaining = arrow.utcnow().timestamp - start_time
+                still_waiting = (time_remaining < pause)
+                msg = 'Elapsed time: %s, Target time: %s, State: %s' % (time_remaining, pause, still_waiting.__str__())
+                log_it(msg)
+                if still_waiting:
+                    time.sleep(5)
+            finally:
+                pass
 
-    msg = 'The waiting is over !'
-    log_it(msg)
-    pool.close()
+        msg = 'The waiting is over !'
+        log_it(msg)
+        pool.close()
