@@ -33,3 +33,19 @@ class AbbSites:
             if s['address'] == url:
                 name = s['name']
         return name
+
+    def find_sort_name(self, name=''):
+        result = name
+        for s in self.sites['sites']:
+            if name == s['abb']['urlname']:
+                result = s['name']
+                return result
+        return result
+
+    def find_user_name(self, name=''):
+        result = name
+        for s in self.sites['sites']:
+            if name == s['name']:
+                result = s['abb']['urlname']
+                return result
+        return result

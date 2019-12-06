@@ -20,10 +20,23 @@ def sighandler(a, b):
     pass
 
 
+def log_file() -> str:
+    import os
+    import tempfile
+    f = tempfile.TemporaryDirectory().name
+    today_name = arrow.now().strftime("%Y%m%d.txt")
+    result = os.path.join(f, today_name)
+    return result
+
+
 def log_it(message):
     if show_log:
+        file = log_file()
         ts = arrow.now()
-        print("%s %s" % (ts, message))
+        f = open(file, "w+")
+        s = f"%s %s" % (ts, message)
+        f.writelines(s)
+        f.close()
 
 
 def my_process(inp_param):

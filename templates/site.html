@@ -34,12 +34,47 @@
                 </tbody>
                 {% endfor %}
             </table>
+            <hr>
 
+            <table class="table table-striped">
+                <thead>
+                <tr scope="row">
+                    <th scope="col-4">Acct Orders</th>
+                    <th scope="col-2">Turnout</th>
+                    <th scope="col-2">Field</th>
+                    <th scope="col-2">CFS</th>
+                </tr>
+
+                </thead>
+                <tbody>
+
+                {% for r in context.orders %}
+                <tr scope="row">
+                    <td scope="col-6">
+                        {{r.account}}/{{r.account_name}}
+                    </td>
+                    <td scope="col-2">
+                        {{r.turnout_id}}
+                    </td>
+                    <td scope="col-2">
+                        {{r.fieldname}}
+                    </td>
+                    <td scope="col-2">
+                        {{r.flow}}&nbsp;<sup>{{r.isactive}}</sup>
+                    </td>
+                </tr>
+                </tbody>
+                {% endfor %}
+            </table>
             <br>
             <i>Reading Timestamp: {{context.timestamp}}</i>
+            <br>
+            <sup>1</sup> Order Active<br>
+            <sup>0</sup> Order Not Active
 
         </div>
     </div>
     <a href="/">Home</a>
+    <br>
 </div>
 {% endblock %}

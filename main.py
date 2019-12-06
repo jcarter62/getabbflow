@@ -31,6 +31,20 @@ def home_route():
         mrr['site'] = mrr['site'].rstrip(' ')
 
     total_str = ('%10.2f' % total).lstrip(' ') + 'cfs'
+    #
+    # Now let's go get the current orders from wmis database.
+    #
+    orders = get_orders_summary()
+    for o in orders:
+        o['latname'] = sites.find_sort_name(o['latname'])
+
+    for mrr in all_mrr:
+        mrr['orders'] = '--'
+        for o in orders:
+            if o['latname'] == mrr['site']:
+                mrr['orders'] = o['flow']
+                break
+
     return render_template('home.html', context={'data': all_mrr, 'total': total_str})
 
 
@@ -80,7 +94,11 @@ def route_site_recent(site):
         acft = acft4tag(data['acft'], tag)
         comb.append({'tag': tag, 'acft': acft, 'cfs': cfs})
 
-    obj = {'flow': flow, 'timestamp': timestamp, 'data': data, 'site': site, 'combined': comb}
+    sites = AbbSites()
+    this_site = sites.find_user_name(site)
+    orders = get_orders_detail(this_site)
+
+    obj = {'flow': flow, 'timestamp': timestamp, 'data': data, 'site': site, 'combined': comb, 'orders': orders}
     return render_template('site.html', context=obj)
 
 
@@ -96,6 +114,37 @@ def acft4tag(rows, tag):
         if row['tag'] == tag:
             return row['value']
     return '-'
+
+
+def get_orders_summary():
+    import requests
+    result = []
+    url = 'http://localhost:5200/orders_summary'
+    request_completed = False
+    try:
+        content = requests.get(url, timeout=10)
+        request_completed = True
+        result = content.json()['data']
+    except requests.exceptions.RequestException as e:
+        # https://stackoverflow.com/a/16511493
+        print('abbflow Request exception: %s ' % e.__str__())
+
+    return result
+
+
+def get_orders_detail(site):
+    import requests
+    result = []
+    url = 'http://localhost:5200/order_detail/' + site
+    request_completed = False
+    try:
+        content = requests.get(url, timeout=10)
+        request_completed = True
+        result = content.json()['data']
+    except requests.exceptions.RequestException as e:
+        # https://stackoverflow.com/a/16511493
+        print('abbflow Request exception: %s ' % e.__str__())
+    return result
 
 # @app.route('/data/<site>')
 # def site_route(site):

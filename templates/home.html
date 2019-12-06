@@ -21,7 +21,9 @@
                 {% endif %}
                 <div class="col-sm-4">
                     <span>
-                        <a href="site/{{row['site']}}">{{ row['site'] }}<span class="sitestatus {{row['age']}}">{{ row['tflowfmt'] }}</span>
+                        <a href="site/{{row['site']}}">{{ row['site'] }}<span class="sitestatus {{row['age']}}">
+                            {{ row['orders'] }}&nbsp;/&nbsp;{{ row['tflowfmt'] }}
+                        </span>
                         </a>
                     </span>
                 </div>
@@ -30,9 +32,12 @@
             {% endif %}
             {% endfor %}
         </div>
+        <hr>
+        <div><i>Data Format:<br>Lateral, followed by ordered CFS, followed by ABB Flow in CFS.</i></div>
     </div>
     <hr>
     <a href="/">Home</a>
+    <br>
 </div>
 
 <script type="text/javascript" src="{{url_for('static', filename='js/includes.js')}}"></script>
