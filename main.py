@@ -1,22 +1,37 @@
-from flask import Flask, render_template, send_from_directory, jsonify
-from flask_bootstrap import Bootstrap
-import os, json
-# from abbapi import AbbAPI
-from abbsites import AbbSites
-from abbsitemrr import AbbSiteMRR
-from abballsitesmrr import AbbAllSitesMRR
+import logging
+import os
+
 import arrow
+from flask import Flask, render_template, send_from_directory, request
+from flask_bootstrap import Bootstrap
+
+from abballsitesmrr import AbbAllSitesMRR
+from abbsitemrr import AbbSiteMRR
+from abbsites import AbbSites
+from logdir import LogFile
 
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
 
+logfile = LogFile(app_name='abbui')
+
+logger = logging.getLogger()
+logger.setLevel(logging.DEBUG)
+log_file_handler = logging.FileHandler(filename=logfile.full_path)
+logger.addHandler(log_file_handler)
+
+app.logger = logger
+
 
 @app.route('/favicon.ico')
 def favicon():
+    log(request)
     return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico')
+
 
 @app.route('/')
 def home_route():
+    log(request)
     sites = AbbSites()
     all_mrr = AbbAllSitesMRR().data
     total = 0.0
@@ -76,11 +91,13 @@ def calc_age(record) -> str:
 
 @app.route('/map')
 def route_map():
+    log(request)
     return render_template('map.html', context={})
 
 
 @app.route('/site/<site>')
 def route_site_recent(site):
+    log(request)
     one_site = AbbSiteMRR()
     one_site.set_name(site)
     flow = one_site.tflow()
@@ -165,3 +182,26 @@ def abb_orders_url():
         results = {"url": "http://localhost:5200/"}
 
     return results['url']
+
+
+def log(req):
+    import arrow
+    now_string = arrow.now().format("YYYY/MM/DD-HH:mm:ss")
+    obj = {
+        'stamp': now_string,
+        'url': req.path,
+        'ip': req.remote_addr,
+        'agent': req.user_agent,
+    }
+
+    new_file = LogFile(app_name='abbui').full_path
+    current_file = app.logger.handlers[0].baseFilename
+    if current_file != new_file:
+        handler = app.logger.handlers[0]
+        app.logger.removeHandler(hdlr=handler)
+        handler = logging.FileHandler(filename=new_file)
+        app.logger.addHandler(handler)
+
+    logger.info('%(ip)s %(stamp)s %(url)s %(agent)s' % obj)
+
+    return
